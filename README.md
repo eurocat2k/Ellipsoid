@@ -4,47 +4,47 @@ Check if point (***3D***) is inside the ellipsoid - which is repositioned (***tr
 ```javascript
 obj = PointInOrientedEllipsoid(center, point, A, B, C, roll, pitch, yaw)
 ```
-**param center {Vector3D}**
+- param **center** {***Vector3D***}
 
 default value: **new Vector3D**(0, 0, 0)
 
-**param point {Point3D}**
+- param **point** {***Point3D***}
 
 default value: **new Point3D**(0, 0, 0)
 
-**param A {Number} axis length**
+- param **A** {***Number***} axis length
 
 default value: 0
 
-**param B {Number} axis length**
+- param **B** {***Number***} axis length
 
 default value: 0
 
-**param C {Number} axis length**
+- param **C** {***Number***} axis length
 
 default value: 0
 
-**roll (in degress)**
+- **roll** (*in degress*)
 
 default value: 0
 
-**pitch (in degrees)**
+- **pitch** (*in degrees*)
 
 default value: 0
 
-**yaw (in degrees)**
+- **yaw** (*in degrees*)
 
 default value: 0
 
 **return {Object}**
 
-- **distance**: {**Number**} if this value >= 1, the point is not inside the ellipsoid
+- **distance**: {***Number***} if this value >= 1, the point is not inside the ellipsoid
 
-- **inside**: {**Boolean**}
+- **inside**: {***Boolean***}
 
-- **rMatrix**: {**Matrix3D**} rotation matrix, just for debug
+- **rMatrix**: {***Matrix3D***} rotation matrix, just for debug
 
-- **R**: {**Matrix3D**} rotation matrix, just for debug
+- **R**: {***Matrix3D***} rotation matrix, just for debug
 
 ## Example
 
