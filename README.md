@@ -22,3 +22,10 @@ default value: 0
 - inside: {Boolean}
 - rMatrix: {Matrix3D} rotation matrix, just for debug
 - R: {Matrix3D} rotation matrix, just for debug
+## Usage
+let obj = PointInOrientedEllipsoid(new Vector3D(0,0,0), new Point(2,1,0), 4, 2, 2, 0, 0, 0);
+
+console.log(obj.distance); // 0.5;
+
+console.log(obj.inside);   // true,
+
