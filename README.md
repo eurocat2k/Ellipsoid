@@ -1,6 +1,6 @@
 # Ellipsoid
 ## Usage
-Check if point (3D) is inside the ellipsoid - which is positioned (translated) by its center, and rotated by roll,pitch,yaw angles.
+Check if point (**3D**) is inside the ellipsoid - which is positioned (***translated***) by its *center*, and ***rotated*** by *roll*,*pitch*,*yaw* angles.
 ```javascript
 obj = PointInOrientedEllipsoid(center, point, A, B, C, roll, pitch, yaw)
 ```
