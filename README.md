@@ -38,7 +38,9 @@ obj = PointInOrientedEllipsoid(center, point, A, B, C, roll, pitch, yaw)
 
 **return {Object}**
 
-- **distance**: {***Number***} if this value >= 1, the point is not inside the ellipsoid
+- **distance**: {***Number***} the distance between point and the center of the ellipsoid
+
+- **result**: {***Number***} if this value >= 1, the point is not inside the ellipsoid
 
 - **inside**: {***Boolean***}
 
@@ -51,8 +53,9 @@ obj = PointInOrientedEllipsoid(center, point, A, B, C, roll, pitch, yaw)
 ```javascript
 let obj = PointInOrientedEllipsoid(new Vector3D(0,0,0), new Point(2,1,0), 4, 2, 2, 0, 0, 0);
 
-console.log(obj.distance); // 0.5;
+console.log(obj.distance); // 2.23606797749979
 
-console.log(obj.inside);   // true,
+
+console.log(obj.inside);   // true
 ```
 
