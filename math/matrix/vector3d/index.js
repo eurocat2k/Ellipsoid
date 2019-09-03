@@ -86,14 +86,15 @@ class Vector3D {
             this._vector[0] = from._vector[0];
             this._vector[1] = from._vector[1];
             this._vector[2] = from._vector[2];
+            return this;
         }
     };
     static copy(V, from) {
         if (from instanceof Vector3D || from instanceof Point3D && V instanceof Vector3D) {
-            //this._vector = new Float32Array(3);
             V._vector[0] = from._vector[0];
             V._vector[1] = from._vector[1];
             V._vector[2] = from._vector[2];
+            return V;
         }
     };
 
@@ -108,12 +109,14 @@ class Vector3D {
         this._vector[0] = dx;
         this._vector[1] = dy;
         this._vector[2] = dz;
+        return this;
     };
     static set(v, dx = 0, dy = 0, dz = 0) {
         if (v instanceof Vector3D) {
             v._vector[0] = dx;
             v._vector[1] = dy;
             v._vector[2] = dz;
+            return v;
         }
     };
 
@@ -145,6 +148,7 @@ class Vector3D {
         this._vector[0] = this._vector[0] * percent;
         this._vector[1] = this._vector[1] * percent;
         this._vector[2] = this._vector[2] * percent;
+        return this;
     };
     static normalize(v) {
         if (v instanceof Vector3D) {
@@ -159,6 +163,7 @@ class Vector3D {
             v._vector[0] = v._vector[0] * percent;
             v._vector[1] = v._vector[1] * percent;
             v._vector[2] = v._vector[2] * percent;
+            return v;
         }
     };
 
@@ -178,6 +183,7 @@ class Vector3D {
             this._vector[0] += v1._vector[0];
             this._vector[1] += v1._vector[1];
             this._vector[2] += v1._vector[2];
+            return this;
         }
     };
     static add(v0, v1) {
@@ -192,6 +198,7 @@ class Vector3D {
                 v0._vector[1] += v1._vector[1];
                 v0._vector[2] += v1._vector[2];
             }
+            return v0;
         }
     };
 
@@ -212,6 +219,7 @@ class Vector3D {
             this._vector[1] -= v1._vector[1];
             this._vector[2] -= v1._vector[2];
         }
+        return this;
     };
     static subtract(v0, v1) {
         let v = new Vector3D;
@@ -253,6 +261,7 @@ class Vector3D {
             this._vector[0] *= s;
             this._vector[1] *= s;
             this._vector[2] *= s;
+            return this;
         }
     };
     static scale(v, s = 1) {
@@ -261,6 +270,7 @@ class Vector3D {
                 v._vector[0] *= s;
                 v._vector[1] *= s;
                 v._vector[2] *= s;
+                return v;
             }
         }
     };
