@@ -24,6 +24,7 @@ class Point3D extends Vector3D {
             this._vector[0] = from[0];
             this._vector[1] = from[1];
             this._vector[2] = from[2];
+            return this;
         }
     };
     /** ---------------------------------------------------------------------
@@ -33,6 +34,7 @@ class Point3D extends Vector3D {
         this._vector[0] = x;
         this._vector[1] = y;
         this._vector[2] = z;
+        return this;
     };
     /** ---------------------------------------------------------------------
      * Add a point and a vector; result = p + v
@@ -47,6 +49,7 @@ class Point3D extends Vector3D {
             this._vector[1] += v;
             this._vector[2] += v;
         }
+        return this;
 
     };
     static addVector(p, v) {
@@ -60,6 +63,7 @@ class Point3D extends Vector3D {
                 p._vector[1] += v;
                 p._vector[2] += v;
             }
+            return p;
         }
     };
     /** ---------------------------------------------------------------------
@@ -70,10 +74,12 @@ class Point3D extends Vector3D {
             this._vector[0] -= v._vector[0];
             this._vector[1] -= v._vector[1];
             this._vector[2] -= v._vector[2];
+            return this;
         } else {
             this._vector[0] -= v;
             this._vector[1] -= v;
             this._vector[2] -= v;
+            return this;
         }
         return false;
     };
@@ -83,10 +89,12 @@ class Point3D extends Vector3D {
                 p._vector[0] -= v._vector[0];
                 p._vector[1] -= v._vector[1];
                 p._vector[2] -= v._vector[2];
+                return p;
             } else {
                 p._vector[0] -= v;
                 p._vector[1] -= v;
                 p._vector[2] -= v;
+                return p;
             }
         }
         return false;
