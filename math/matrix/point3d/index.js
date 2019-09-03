@@ -37,7 +37,7 @@ class Point3D extends Vector3D {
         return this;
     };
     /** ---------------------------------------------------------------------
-     * Add a point and a vector; result = p + v
+     * Add a point and/or a vector; result = p + v
      */
     addVector (v) {
         if (v instanceof Point3D || v instanceof Vector3D) {
@@ -67,7 +67,7 @@ class Point3D extends Vector3D {
         }
     };
     /** ---------------------------------------------------------------------
-     * Add a point and a vector; result = p + v
+     * Subtract a point and/or a vector; result = p - v
      */
     subtractVector(v) {
         if (v instanceof Point3D || v instanceof Vector3D) {
