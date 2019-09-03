@@ -40,7 +40,7 @@ class Point3D extends Vector3D {
      * Add a point and a vector; result = p + v
      */
     addVector (v) {
-        if (v instanceof Point3D) {
+        if (v instanceof Point3D || v instanceof Vector3D) {
             this._vector[0] += v._vector[0];
             this._vector[1] += v._vector[1];
             this._vector[2] += v._vector[2];
@@ -53,8 +53,8 @@ class Point3D extends Vector3D {
 
     };
     static addVector(p, v) {
-        if (p instanceof Point3D) {
-            if (v instanceof Point3D) {
+        if (p instanceof Point3D || p instanceof Vector3D) {
+            if (v instanceof Point3D || v instanceof Vector3D) {
                 p._vector[0] += v._vector[0];
                 p._vector[1] += v._vector[1];
                 p._vector[2] += v._vector[2];
@@ -70,7 +70,7 @@ class Point3D extends Vector3D {
      * Add a point and a vector; result = p + v
      */
     subtractVector(v) {
-        if (v instanceof Point3D) {
+        if (v instanceof Point3D || v instanceof Vector3D) {
             this._vector[0] -= v._vector[0];
             this._vector[1] -= v._vector[1];
             this._vector[2] -= v._vector[2];
@@ -84,8 +84,8 @@ class Point3D extends Vector3D {
         return false;
     };
     static subtractVector(p, v) {
-        if (p instanceof Point3D) {
-            if (v instanceof Point3D) {
+        if (p instanceof Point3D || p instanceof Vector3D) {
+            if (v instanceof Point3D || v instanceof Vector3D) {
                 p._vector[0] -= v._vector[0];
                 p._vector[1] -= v._vector[1];
                 p._vector[2] -= v._vector[2];
@@ -103,7 +103,8 @@ class Point3D extends Vector3D {
      * @return Number The distance between 2 points
      */
     distanceBetween(p2) {
-        if (p2 instanceof Point3D) {
+        console.log(p2);
+        if (p2 instanceof Point3D || p2 instanceof Vector3D) {
             var dx = this._vector[0] - p2._vector[0];
             var dy = this._vector[1] - p2._vector[1];
             var dz = this._vector[2] - p2._vector[2];
@@ -112,8 +113,8 @@ class Point3D extends Vector3D {
         return false;
     };
     static distanceBetween(p1, p2) {
-        if (p1 instanceof Point3D) {
-            if (p2 instanceof Point3D) {
+        if (p1 instanceof Point3D || p1 instanceof Vector3D) {
+            if (p2 instanceof Point3D || p2 instanceof Vector3D) {
                 var dx = p1._vector[0] - p2._vector[0];
                 var dy = p1._vector[1] - p2._vector[1];
                 var dz = p1._vector[2] - p2._vector[2];
@@ -152,7 +153,7 @@ class Point3D extends Vector3D {
         return {methods: [...properties.keys()].sort().filter(item => typeof this[item] === 'function')};
     }
     static getMethods(p){
-        if (p instanceof Point3D) {
+        if (p instanceof Point3D || p instanceof Vector3D) {
             let properties = new Set()
             let currentObj = p
             do {
@@ -174,7 +175,7 @@ class Point3D extends Vector3D {
         return {attributes: [...properties.keys()].sort().filter(item => typeof this[item] !== 'function')};
     }
     static getAttrs(p) {
-        if (p instanceof Point3D) {
+        if (p instanceof Point3D || p instanceof Vector3D) {
             let properties = new Set()
             let currentObj = p
             do {
