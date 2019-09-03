@@ -6,7 +6,7 @@ obj = PointInOrientedEllipsoid(center, point, A, B, C, roll, pitch, yaw)
 ```
 - param **center** {***Vector3D***}
 
--- default value: **new Vector3D**(0, 0, 0)
+  default value: **new Vector3D**(0, 0, 0)
 
 - param **point** {***Point3D***}
 
