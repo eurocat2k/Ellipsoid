@@ -8,12 +8,9 @@ class Point3D extends Vector3D {
          */
         super(x, y, z);
         this._vector = new Float32Array(3);
-        this._vector[0] = 0;
-        this._vector[1] = 0;
-        this._vector[2] = 0;
-        //if (arguments.length >= 1) { this._vectorp[0] = x; }
-        //if (arguments.length >= 2) { this._vectorp[1] = y; }
-        //if (arguments.length >= 3) { this._vectorp[2] = z; }
+        this._vector[0] = x;
+        this._vector[1] = y;
+        this._vector[2] = z;
     }
     /** ---------------------------------------------------------------------
      * @return Float32Array A new 3-component point that has the same values as the input argument
