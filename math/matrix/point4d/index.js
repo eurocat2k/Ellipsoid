@@ -34,7 +34,25 @@ class Point4D {
             this._vector[3] = from._vector[3];
         }
     };
+    /** -----------------------------------------------------------------
+     * @return number Convert the input angle in degrees to radians
+     */
+    _toRadians(angleInDegrees) {
+        return angleInDegrees * Math.PI / 180;
+    };
+    static _toRadians(angleInDegrees) {
+        return angleInDegrees * Math.PI / 180;
+    };
 
+    /** -----------------------------------------------------------------
+     * @return number Convert the input angle in radians to degrees
+     */
+    _toDegrees(angleInRadians) {
+        return angleInRadians * 180 / Math.PI;
+    };
+    static _toDegrees(angleInRadians) {
+        return angleInRadians * 180 / Math.PI;
+    };
     /** ---------------------------------------------------------------------
      * to = from (copy the 2nd argument point to the first argument)
      */
