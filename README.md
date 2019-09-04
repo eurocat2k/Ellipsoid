@@ -46,9 +46,9 @@ obj = PointInOrientedEllipsoid(center, point, A, B, C, roll, pitch, yaw)
 
   - **distance**: the distance between center and point
   
-  - **phi**: degrees in range [-180..180]
+  - **phi**: degrees in range [*-180..180*]
   
-  - **theta**: degrees in range [-90..90]
+  - **theta**: degrees in range [*-90..90*]
 
 - **result**: {***Number***} if this value >= 1, the point is not inside the ellipsoid
 
@@ -63,10 +63,21 @@ obj = PointInOrientedEllipsoid(center, point, A, B, C, roll, pitch, yaw)
 ```javascript
 let obj = PointInOrientedEllipsoid(new Vector3D(0,0,0), new Point(2,1,0), 4, 2, 2, 0, 0, 0);
 
-console.log(obj.distance);  // 2.23606797749979
+console.log(obj);  // we expect the following result:
+                   // {
+                   //     bool: true,
+                   //     center: { x: 10, y: -20, z: 30 },
+                   //     point: { x: 9, y: -19, z: 29 },
+                   //     polar: {
+                   //         distance: 35.81898937714463,
+                   //         phi: -32.03551940773309, 
+                   //         theta: 72.75854060106003 
+                   //     },
+                   //     result: 0.2345679012345679,
+                   //     inside: true,
+                   //     rMatrix: {Object: Matrix3D},
+                   //     R: {Object: Matrix3D}
+                   // }
 
-console.log(obj.result);    // 0.5
-
-console.log(obj.inside);    // true
 ```
 
