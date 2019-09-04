@@ -44,6 +44,25 @@ class Vector3D {
             return type.toLowerCase();
         }
     }
+    /** -----------------------------------------------------------------
+     * @return number Convert the input angle in degrees to radians
+     */
+    _toRadians(angleInDegrees) {
+        return angleInDegrees * Math.PI / 180;
+    };
+    static _toRadians(angleInDegrees) {
+        return angleInDegrees * Math.PI / 180;
+    };
+
+    /** -----------------------------------------------------------------
+     * @return number Convert the input angle in radians to degrees
+     */
+    _toDegrees(angleInRadians) {
+        return angleInRadians * 180 / Math.PI;
+    };
+    static _toDegrees(angleInRadians) {
+        return angleInRadians * 180 / Math.PI;
+    };
     /** ---------------------------------------------------------------------
      * Create a new 3-component vector and set its components equal to an existing vector.
      * @param from Float32Array An existing vector.
@@ -131,7 +150,30 @@ class Vector3D {
         if (v instanceof Vector3D)
         return Math.sqrt(v._vector[0] * v._vector[0] + v._vector[1] * v._vector[1] + v._vector[2] * v._vector[2]);
     };
+    /** --------------------------------------------------------------------
+     * toAngles
+     */
+    toAngles() {
+        return {
+            theta: Math.atan2(this._vector[2], this._vector[0]),
+            phi: Math.asin(this._vector[1] / this.length())
+        };
+    }
 
+    static toAngles(v) {
+        return {
+            theta: Math.atan2(v._vector[2], v._vector[0]),
+            phi: Math.asin(v._vector[1] / v.length())
+        };
+    }
+
+    angleTo(a) {
+        return Math.acos(this.dotProduct(a) / (this.length() * a.length()));
+    }
+
+    static angleTo(v, a) {
+        return Math.acos(v.dotProduct(a) / (v.length() * a.length()));
+    }
     /** ---------------------------------------------------------------------
      * Make a vector have a length of 1.
      * @param v Float32Array A 3-component vector.
