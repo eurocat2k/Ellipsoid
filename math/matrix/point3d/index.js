@@ -63,6 +63,25 @@ class Point3D extends Vector3D {
             return p;
         }
     };
+    /** -----------------------------------------------------------------
+     * @return number Convert the input angle in degrees to radians
+     */
+    _toRadians(angleInDegrees) {
+        return angleInDegrees * Math.PI / 180;
+    };
+    static _toRadians(angleInDegrees) {
+        return angleInDegrees * Math.PI / 180;
+    };
+
+    /** -----------------------------------------------------------------
+     * @return number Convert the input angle in radians to degrees
+     */
+    _toDegrees(angleInRadians) {
+        return angleInRadians * 180 / Math.PI;
+    };
+    static _toDegrees(angleInRadians) {
+        return angleInRadians * 180 / Math.PI;
+    };
     /** ---------------------------------------------------------------------
      * Subtract a point and/or a vector; result = p - v
      */
@@ -100,7 +119,7 @@ class Point3D extends Vector3D {
      * @return Number The distance between 2 points
      */
     distanceBetween(p2) {
-        console.log(p2);
+        //console.log(p2);
         if (p2 instanceof Point3D || p2 instanceof Vector3D) {
             var dx = this._vector[0] - p2._vector[0];
             var dy = this._vector[1] - p2._vector[1];
