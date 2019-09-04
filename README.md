@@ -61,7 +61,7 @@ obj = PointInOrientedEllipsoid(center, point, A, B, C, roll, pitch, yaw)
 ## Example
 
 ```javascript
-let obj = PointInOrientedEllipsoid(new Vector3D(0,0,0), new Point(2,1,0), 4, 2, 2, 0, 0, 0);
+let obj = PointInOrientedEllipsoid(new Vector3D(10,-20,30), new Point(9,-19,29), 9, 3, 3, 0, 0, 0);
 
 console.log(obj);  // we expect the following result:
                    // {
