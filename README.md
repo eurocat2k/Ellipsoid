@@ -38,7 +38,17 @@ obj = PointInOrientedEllipsoid(center, point, A, B, C, roll, pitch, yaw)
 
 **return {Object}**
 
-- **distance**: {***Number***} the distance between point and the center of the ellipsoid
+- **center**: {***Point3D***} the center of the ellipsoid
+
+- **point**: {***Point3D***} the point checked if it is inside the ellipsoid
+
+- **polar**: {***Object***} the point's polar coordinates
+
+  - **distance**: the distance between center and point
+  
+  - **phi**: degrees in range [-180..180]
+  
+  - **theta**: degrees in range [-90..90]
 
 - **result**: {***Number***} if this value >= 1, the point is not inside the ellipsoid
 
