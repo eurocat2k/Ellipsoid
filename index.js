@@ -41,6 +41,16 @@ const extrapolate_range_clamp       = CORE.extrapolate_range_clamp;
 const generateRandomOctalWithLength = CORE.generateRandomOctalWithLength;
 
 const TEST = true;
+/**
+ * Classic point in ellipsoid check: the ellipsoid centered at origo, and not oriented anyhow.
+ * The point is represented by a vector from origo. Using the basic equation: x^2/a^2 + y^2/b^2 + z^2/c^2 = 1.
+ */
+const Classic_Point_In_Ellipsoid = (p = new Vector3D, a = 2, b = 2, c = 2) => {
+    let ec = new Vector3D();
+    let v  = Vector3D.subtract(ec, p);
+    return (((v._vector[0] * v._vector[0]) / (a * a)) + ((v._vector[1] * v._vector[1]) / (b * b)) + ((v._vector[2] * v._vector[2]) / (c * c))) <= 1;
+};
+
 
 /**
  * PointInOrientedEllipse checks if point 3D is inside the oriented positioned ellipsoid
