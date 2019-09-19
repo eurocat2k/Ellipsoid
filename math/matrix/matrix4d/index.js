@@ -79,13 +79,15 @@ class Matrix4D {
                 for (let j = 0; j < 16; j += 1) {
                     To._matrix[j] = From[j];
                 }
-            }
-            if (From instanceof Matrix4D) {
+                return To;
+            } else if (From instanceof Matrix4D) {
                 for (let j = 0; j < 16; j += 1) {
                     To._matrix[j] = From._matrix[j];
                 }
+                return To;
+            } else {
+                return undefined;
             }
-            return To;
         }
     };
 
