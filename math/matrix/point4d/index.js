@@ -26,12 +26,14 @@ class Point4D {
             this._vector[1] = from[1];
             this._vector[2] = from[2];
             this._vector[3] = from[3];
-        }
-        if (from instanceof Point4D) {
+        } else if (from instanceof Point4D) {
             this._vector[0] = from._vector[0];
             this._vector[1] = from._vector[1];
             this._vector[2] = from._vector[2];
             this._vector[3] = from._vector[3];
+            return this;
+        } else {
+           return undefined; 
         }
     };
     /** -----------------------------------------------------------------
@@ -97,12 +99,13 @@ class Point4D {
             dy = this._vector[1] - p2[1];
             dz = this._vector[2] - p2[2];
             return Math.sqrt(dx * dx + dy * dy + dz * dz);
-        }
-        if (p2 instanceof Point4D) {
+        } else if (p2 instanceof Point4D) {
             dx = this._vector[0] - p2._vector[0];
             dy = this._vector[1] - p2._vector[1];
             dz = this._vector[2] - p2._vector[2];
             return Math.sqrt(dx * dx + dy * dy + dz * dz);
+        } else {
+            return undefined;
         }
     };
     static distanceBetween(p1, p2) {
@@ -113,12 +116,13 @@ class Point4D {
                 dy = p1._vector[1] - p2[1];
                 dz = p1._vector[2] - p2[2];
                 return Math.sqrt(dx * dx + dy * dy + dz * dz);
-            }
-            if (p2 instanceof Point4D) {
+            } else if (p2 instanceof Point4D) {
                 dx = p1._vector[0] - p2._vector[0];
                 dy = p1._vector[1] - p2._vector[1];
                 dz = p1._vector[2] - p2._vector[2];
                 return Math.sqrt(dx * dx + dy * dy + dz * dz);
+            } else {
+                return undefined;
             }
         }
     };
