@@ -44,6 +44,11 @@ const TEST = true;
 /**
  * Classic point in ellipsoid check: the ellipsoid centered at origo, and not oriented anyhow.
  * The point is represented by a vector from origo. Using the basic equation: x^2/a^2 + y^2/b^2 + z^2/c^2 = 1.
+ * @function Classic_Point_In_Ellipsoid
+ * @param p {Vector3D}
+ * @param a {Number} axis A
+ * @param b {Number} axis B
+ * @param c {Number} axis C
  */
 const Classic_Point_In_Ellipsoid = (p = new Vector3D, a = 2, b = 2, c = 2) => {
     let ec = new Vector3D();
@@ -51,6 +56,21 @@ const Classic_Point_In_Ellipsoid = (p = new Vector3D, a = 2, b = 2, c = 2) => {
     return (((v._vector[0] * v._vector[0]) / (a * a)) + ((v._vector[1] * v._vector[1]) / (b * b)) + ((v._vector[2] * v._vector[2]) / (c * c))) <= 1;
 };
 
+/**
+ * Classic point in ellipsoid check: the ellipsoid centered at ec {Vector3D}, and still not oriented anyhow.
+ * The point is represented by a vector from origo. Using the basic equation: x^2/a^2 + y^2/b^2 + z^2/c^2 = 1.
+ * @function Classic_Point_In_Ellipsoid
+ * @param ec {Vector3D}
+ * @param p {Vector3D}
+ * @param a {Number} axis A
+ * @param b {Number} axis B
+ * @param c {Number} axis C
+ */
+const Classic_Point_In_Ellipsoid_Relocated = (ec = new Vector3D, p = new Vector3D, a = 2, b = 2, c = 2) => {
+    //let ec = new Vector3D();
+    let v  = Vector3D.subtract(ec, p);
+    return (((v._vector[0] * v._vector[0]) / (a * a)) + ((v._vector[1] * v._vector[1]) / (b * b)) + ((v._vector[2] * v._vector[2]) / (c * c))) <= 1;
+}
 
 /**
  * PointInOrientedEllipse checks if point 3D is inside the oriented positioned ellipsoid
@@ -100,4 +120,6 @@ if (TEST) {
     console.log("obj", obj);
 }
 //
-exports.PointInOrientedEllipsoid = PointInOrientedEllipsoid;
+exports.PointInOrientedEllipsoid             = PointInOrientedEllipsoid;
+exports.Classic_Point_In_Ellipsoid           = Classic_Point_In_Ellipsoid;
+exports.Classic_Point_In_Ellipsoid_Relocated = Classic_Point_In_Ellipsoid_Relocated;
