@@ -211,12 +211,12 @@ class Matrix4D {
             let P = new Point4D;
             let r = new Point4D;
             //
-            this.p4 = Point4D.copy(this.p4, p);
+            P = Point4D.copy(P, p);
 
-            r._vector[0] = M._matrix[0] * this.p4._vector[0] + M._matrix[4] * this.p4._vector[1] + M._matrix[8]  * this.p4._vector[2] + M._matrix[12] * this.p4._vector[3];
-            r._vector[1] = M._matrix[1] * this.p4._vector[0] + M._matrix[5] * this.p4._vector[1] + M._matrix[9]  * this.p4._vector[2] + M._matrix[13] * this.p4._vector[3];
-            r._vector[2] = M._matrix[2] * this.p4._vector[0] + M._matrix[6] * this.p4._vector[1] + M._matrix[10] * this.p4._vector[2] + M._matrix[14] * this.p4._vector[3];
-            r._vector[3] = M._matrix[3] * this.p4._vector[0] + M._matrix[7] * this.p4._vector[1] + M._matrix[11] * this.p4._vector[2] + M._matrix[15] * this.p4._vector[3];
+            r._vector[0] = M._matrix[0] * P._vector[0] + M._matrix[4] * P._vector[1] + M._matrix[8]  * P._vector[2] + M._matrix[12] * P._vector[3];
+            r._vector[1] = M._matrix[1] * P._vector[0] + M._matrix[5] * P._vector[1] + M._matrix[9]  * P._vector[2] + M._matrix[13] * P._vector[3];
+            r._vector[2] = M._matrix[2] * P._vector[0] + M._matrix[6] * P._vector[1] + M._matrix[10] * P._vector[2] + M._matrix[14] * P._vector[3];
+            r._vector[3] = M._matrix[3] * P._vector[0] + M._matrix[7] * P._vector[1] + M._matrix[11] * P._vector[2] + M._matrix[15] * P._vector[3];
 
             return r;
         }
@@ -233,6 +233,7 @@ class Matrix4D {
         for (row = 0; row < 4; row += 1) {
             rowText = "";
             for (offset = 0; offset < 16; offset += 4) {
+            //for (offset = 0; offset < 4; offset += 1) {
                 number = Number(this._matrix[row + offset]);
                 numText = number.toFixed(4);
                 rowText += new Array(fieldSize - numText.length).join(" ") + numText;
@@ -562,7 +563,7 @@ class Matrix4D {
             console.log('Invalid parameters to createPerspective');
             Matrix4D.setIdentity(M);
         } else {
-            var half_fovy = self.toRadians(fovy) / 2;
+            var half_fovy = self._toRadians(fovy) / 2;
 
             var top = near * Math.tan(half_fovy);
             var bottom = -top;
@@ -609,7 +610,7 @@ class Matrix4D {
      * @param dz The Z value of a translation.
      */
     translate(dx, dy, dz) {
-        if (sx instanceof Number && sy instanceof Number && sz instanceof Number) {
+        if (dx instanceof Number && dy instanceof Number && dz instanceof Number) {
             this._matrix[0] = 1;  this._matrix[4] = 0;  this._matrix[8]  = 0;  this._matrix[12] = dx;
             this._matrix[1] = 0;  this._matrix[5] = 1;  this._matrix[9]  = 0;  this._matrix[13] = dy;
             this._matrix[2] = 0;  this._matrix[6] = 0;  this._matrix[10] = 1;  this._matrix[14] = dz;
@@ -622,6 +623,7 @@ class Matrix4D {
             M._matrix[1] = 0;  M._matrix[5] = 1;  M._matrix[9]  = 0;  M._matrix[13] = dy;
             M._matrix[2] = 0;  M._matrix[6] = 0;  M._matrix[10] = 1;  M._matrix[14] = dz;
             M._matrix[3] = 0;  M._matrix[7] = 0;  M._matrix[11] = 0;  M._matrix[15] = 1;
+            return M;
         }
     };
 
@@ -635,7 +637,7 @@ class Matrix4D {
     rotate(angle, x_axis, y_axis, z_axis) {
         var s, c, c1, xy, yz, zx, xs, ys, zs, ux, uy, uz;
 
-        angle = Matrix4D.toRadians(angle);
+        angle = this._toRadians(angle);
 
         s = Math.sin(angle);
         c = Math.cos(angle);
@@ -711,7 +713,7 @@ class Matrix4D {
         if (M instanceof Matrix4D) {
             var s, c, c1, xy, yz, zx, xs, ys, zs, ux, uy, uz;
 
-            angle = Matrix4D.toRadians(angle);
+            angle = Matrix4D._toRadians(angle);
 
             s = Math.sin(angle);
             c = Math.cos(angle);
