@@ -62,12 +62,28 @@ class Point4D {
             this._vector[1] = from[1];
             this._vector[2] = from[2];
             this._vector[3] = from[3];
-        }
-        if (from instanceof Point4D) {
+        } else if (from instanceof Point4D) {
             this._vector[0] = from._vector[0];
             this._vector[1] = from._vector[1];
             this._vector[2] = from._vector[2];
             this._vector[3] = from._vector[3];
+        }
+    };
+    static copy(to, from) {
+        if (from instanceof Array && to instanceof Point4D) {
+            to._vector[0] = from[0];
+            to._vector[1] = from[1];
+            to._vector[2] = from[2];
+            to._vector[3] = from[3];
+            return to;
+        } else if (from instanceof Point4D && to instanceof Point4D) {
+            to._vector[0] = from._vector[0];
+            to._vector[1] = from._vector[1];
+            to._vector[2] = from._vector[2];
+            to._vector[3] = from._vector[3];
+            return to;
+        } else {
+            return undefined;
         }
     };
 
@@ -137,7 +153,7 @@ class Point4D {
         var order = Math.floor(Math.log(maximum) / Math.LN10 + 0.000000001);
         var digits = (order <= 0) ? 5 : (order > 5) ? 0 : (5 - order);
 
-        console.log("Point4: " + name + ": "
+        console.log("Point4D: " + (name ? name : '') + ": "
             + this._vector[0].toFixed(digits) + " "
             + this._vector[1].toFixed(digits) + " "
             + this._vector[2].toFixed(digits) + " "
@@ -149,7 +165,7 @@ class Point4D {
             var order = Math.floor(Math.log(maximum) / Math.LN10 + 0.000000001);
             var digits = (order <= 0) ? 5 : (order > 5) ? 0 : (5 - order);
 
-            console.log("Point4: " + name + ": "
+            console.log("Point4D: " + (name ? name : '') + ": "
                 + p._vector[0].toFixed(digits) + " "
                 + p._vector[1].toFixed(digits) + " "
                 + p._vector[2].toFixed(digits) + " "
